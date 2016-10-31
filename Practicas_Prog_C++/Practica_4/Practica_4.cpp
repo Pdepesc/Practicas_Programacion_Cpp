@@ -13,3 +13,50 @@ ii.Posición inicial en la pantalla.
 •	Se realizan, por lo menos 4 tipos diferentes de entidades : cada tipo de entidad se diferencia de otra en que pinta o se mueve de manera diferente.
 */
 
+//Fichero practica2.cpp (quizas mejor incluirlo con #include)
+// practica2.cpp
+//
+#include <stdio.h>
+
+struct TEntity;
+typedef void(*funcEntity)(TEntity *);
+
+
+// ***************************************************************************************
+// ENTIDAD
+// ***************************************************************************************
+struct TEntity
+{
+	int m_ix;
+	int m_iy;
+	funcEntity *m_funcs;
+	TEntity(funcEntity *funcs, int x, int y)
+	{
+		m_ix = x;
+		m_iy = y;
+		m_funcs = funcs;
+	}
+};
+
+
+// ***************************************************************************************
+// MAIN
+// ***************************************************************************************
+unsigned int uKey;
+int main(int argc, char* argv[])
+{
+
+	//MODO DE CREAR LAS ENTIDADES
+	//Instrucciones: crear funciones a asociar (declarar y definir), asociarlos a la tabla de funciones 
+	//				 y, por ultimo, inicializar (new) la nueva entidad con la tabla de funciones y la posicion inicial.
+	//funciones
+	funcEntity mover1;
+	funcEntity mover2;
+	funcEntity pintar1;
+	funcEntity pintar2;
+
+	funcEntity funciones[] = { mover1, pintar1 };
+
+	//entidades
+	TEntity * entidad1 = new TEntity(funciones, 0, 0);
+}
