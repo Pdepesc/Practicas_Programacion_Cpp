@@ -1,6 +1,7 @@
 //Autor: Paris de Perez
 //Practica_3.cpp
 
+#include <stdio.h>
 #include <string.h>
 
 //Dada una cadena de caracteres darle la vuelta
@@ -35,4 +36,32 @@ char * getReverseStringAtIndex(char ** tabla, unsigned int i)
 	char * aux = getStringAtIndex(tabla, i);
 	if (aux != nullptr)
 		return getReverseString(aux, strlen(aux));
+	else
+		return nullptr;
+}
+
+
+//Pruebas main
+char *g_Strings[] =
+{
+	"",
+	"Hola",
+	"Adios",
+};
+
+
+void main()
+{	
+	char ** tabla = g_Strings;
+	printf("%s\n", getStringAtIndex(tabla, 0));
+	printf("%s\n", getStringAtIndex(tabla, 1));
+	printf("%s\n", getStringAtIndex(tabla, 2));
+
+	printf("-------------------\n");
+
+	printf("%s\n", getReverseStringAtIndex(tabla, 0));
+	printf("%s\n", getReverseStringAtIndex(tabla, 1));
+	printf("%s\n", getReverseStringAtIndex(tabla, 2));
+
+	scanf_s("");
 }
