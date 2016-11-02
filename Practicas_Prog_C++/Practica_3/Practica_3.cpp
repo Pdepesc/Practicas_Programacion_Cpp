@@ -4,8 +4,15 @@
 #include <stdio.h>
 #include <string.h>
 
-//Dada una cadena de caracteres darle la vuelta
-//tam es el valor retornado por la funcion strlen
+//Tabla de cadenas
+char *g_Strings[] =
+{
+	"",
+	"Hola",
+	"Adios",
+};
+
+//Funcion de la practica 2 que invierte una cadena
 char * getReverseString(const char * cadena, int tam)
 {
 	char * out = new char[tam];
@@ -17,12 +24,8 @@ char * getReverseString(const char * cadena, int tam)
 	return out;
 }
 
-/*
-3.	Funciones 1. Dada una tabla de cadenas
-•	Hacer una función que, dado un índice a la tabla de cadenas, retorne la cadena de índice dado si existe.
-•	Hacer una función que, dado un índice a la tabla de cadenas, retorne la cadena de índice dado, si existe, invertida.
-*/
 
+//Función que, dado un índice a la tabla de cadenas, retorne la cadena de índice dado si existe
 char * getStringAtIndex(char * * tabla, unsigned int i)
 {
 	if (tabla[i] != nullptr)
@@ -31,6 +34,8 @@ char * getStringAtIndex(char * * tabla, unsigned int i)
 		return nullptr;
 }
 
+
+//Función que, dado un índice a la tabla de cadenas, retorne la cadena de índice dado, si existe, invertida.
 char * getReverseStringAtIndex(char ** tabla, unsigned int i)
 {
 	char * aux = getStringAtIndex(tabla, i);
@@ -39,15 +44,6 @@ char * getReverseStringAtIndex(char ** tabla, unsigned int i)
 	else
 		return nullptr;
 }
-
-
-//Pruebas main
-char *g_Strings[] =
-{
-	"",
-	"Hola",
-	"Adios",
-};
 
 
 void main()

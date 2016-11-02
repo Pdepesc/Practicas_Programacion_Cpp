@@ -1,7 +1,6 @@
 //Autor: Paris De Perez
 //Practica_1.cpp
 
-
 #include <stdio.h>
 
 /*
@@ -31,7 +30,7 @@ unsigned int getBalas(unsigned int ui)
 	ui &= BM_BALAS;
 	//Desplazamos los bits que nos quedan hasta las posiciones de menor de peso del entero
 	ui >>= 16;
-	//Devolvemos 'i' ya que lo que nos queda en la memoria es un entero (sin signo) cuya estructura es la siguiente: 
+	//Devolvemos 'ui' ya que lo que nos queda en la memoria es un entero (sin signo) cuya estructura es la siguiente: 
 	//ceros en los bits del 31 al 8 y ceros o unos en los bits del 7 al 0, correspondientes al número de balas
 	// 00000000-00000000-00000000-XXXXXXXX
 	return ui;

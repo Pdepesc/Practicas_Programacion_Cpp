@@ -17,13 +17,18 @@ void printBytes(int * i)
 	printf("%#hhX\n", *(bytes + 3));
 }
 
+//Misma funcionalidad que la funcion anterior solo que retorna los bytes en vez de mostrarlos por pantalla
 char * getBytes(int * i)
 {
 	//Convertimos el puntero a puntero a caracter en vez de puntero a entero, de modo que podamos leer byte a byte
 	char * aux = reinterpret_cast<char *>(i);
 	//Interpretamos el contenido apuntado por el puntero como numeros hexadecimales de la misma longitud que un char (un byte)
 	//y recorremos la memoria (leemos 4 bytes)
-	char bytes[] = { *aux, *(aux + 1), *(aux + 2), *(aux + 3) };
+	char * bytes = new char[4];
+	*bytes = *aux;
+	*(bytes + 1) = *(aux + 1);
+	*(bytes + 2) = *(aux + 2);
+	*(bytes + 3) = *(aux + 3);
 	return bytes;
 }
 
@@ -52,9 +57,9 @@ char getMayorByte(const int * tabla)
 	{
 		aux = *(tabla + i);
 		char * bytes = getBytes(&aux);
-		for (int i = 0; i < 4; i++)
+		for (int j = 0; j < 4; j++)
 		{
-			aux3 = *(bytes + i);
+			aux3 = *(bytes + j);
 			if (aux3 > aux2)
 				aux2 = aux3;
 		}
@@ -79,11 +84,15 @@ char * getReverseString(const char * cadena, int tam)
 void main()
 {
 	int i = 0xA3C21F3B;
+	char * bytes = getBytes(&i);
 	printf("%#X: %i\n", i, i);
 	printBytes(&i);
+	printf("getBytes: %#hhX - %#hhX - %#hhX - %#hhX\n\n", *bytes, *(bytes+1), *(bytes+2), *(bytes+3));
 	i = 0x3241ADf6;
+	bytes = getBytes(&i);
 	printf("%#X: %i\n", i, i);
 	printBytes(&i);
+	printf("getBytes: %#hhX - %#hhX - %#hhX - %#hhX\n\n", *bytes, *(bytes + 1), *(bytes + 2), *(bytes + 3));
 
 	printf("-------------------\n");
 
